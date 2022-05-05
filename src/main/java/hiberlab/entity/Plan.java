@@ -3,6 +3,7 @@ package hiberlab.entity;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "t_plans")
@@ -15,6 +16,10 @@ public class Plan implements java.io.Serializable {
 
     @NotNull
     private String subjects;
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = "StatusDate", length = 10)
+    private Date statusDate;
 
     public Plan() {
     }
@@ -39,8 +44,17 @@ public class Plan implements java.io.Serializable {
         this.subjects = subjects;
     }
 
+    public Date getStatusDate() {
+        return statusDate;
+    }
+
+    public void setStatusDate(Date statusDate) {
+        this.statusDate = statusDate;
+    }
+
     public String toString() {
         return "[ID: " + this.id +
-                ", Subjects: " + this.subjects + "]";
+                ", Subjects: " + this.subjects +
+                ", StatusDate" + this.statusDate + "]";
     }
 }

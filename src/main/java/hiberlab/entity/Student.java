@@ -8,7 +8,7 @@ import java.util.Date;
 public class Student implements java.io.Serializable {
     @Id
     @Column(name = "StudentNum", unique = true, nullable = false)
-    private long StudentNum;
+    private long studentNum;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "GroupCipher", nullable = false)
@@ -44,7 +44,7 @@ public class Student implements java.io.Serializable {
     }
 
     public Student(long StudentNum, Group group, String surname, String name, String patronymic, String city, String address, String phone) {
-        this.StudentNum = StudentNum;
+        this.studentNum = StudentNum;
         this.group = group;
         this.surname = surname;
         this.name = name;
@@ -55,7 +55,7 @@ public class Student implements java.io.Serializable {
     }
 
     public Student(long StudentNum, Group group, String surname, String name, String patronymic, String city, String address, String phone, String status, Date statusDate) {
-        this.StudentNum = StudentNum;
+        this.studentNum = StudentNum;
         this.group = group;
         this.surname = surname;
         this.name = name;
@@ -68,11 +68,11 @@ public class Student implements java.io.Serializable {
     }
 
     public long getStudentNum() {
-        return this.StudentNum;
+        return this.studentNum;
     }
 
     public void setStudentNum(long studentNum) {
-        this.StudentNum = studentNum;
+        this.studentNum = studentNum;
     }
 
     public Group getGroup() {
@@ -149,13 +149,14 @@ public class Student implements java.io.Serializable {
 
     @Override
     public String toString() {
-        return "[ID: " + this.StudentNum +
-                ", Surname: " + this.getSurname() +
-                ", Name: " + this.getName() +
-                ", Patronymic: " + this.getPatronymic() +
-                ", StudentNum: " + this.getStudentNum() +
-                ", Group: " + this.getGroup().getName() +
-                ", StatusDate: " + this.getStatusDate() + "]";
+        return "[ID: " + this.studentNum +
+                ", Surname: " + this.surname +
+                ", Name: " + this.name +
+                ", Patronymic: " + this.patronymic +
+                ", StudentNum: " + this.studentNum +
+                ", Group: " + this.group.getName() +
+                ", Status: " + this.status +
+                ", StatusDate: " + this.statusDate + "]";
     }
 }
 
